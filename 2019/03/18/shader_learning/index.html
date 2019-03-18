@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="图形渲染,shader,">
 
 
 
@@ -79,17 +79,23 @@
 
 
 
-<meta name="description" content="认真生活，过好每一天。">
-<meta name="keywords" content="工作，生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Gwen&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="简化的图形渲染管线模型 在数据被传入后，经过简单的处理，第一个阶段（stage）便是顶点着色器。上文提到”着色器”即shader，是我们为GPU编写的独立的小程序。它分为几种不同的类型，分别用于整个渲染流程的不同阶段。在这一阶段，我们这一段小程序的目的是把输入的顶点位置转化为相对于屏幕的顶点位置（经过透视变换），并可处理数据向后续阶段传递 —— 我们可以很轻松的在后续阶段的shader中拿到之前阶">
+<meta name="keywords" content="图形渲染,shader">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shader理解与学习">
+<meta property="og:url" content="http://yoursite.com/2019/03/18/shader_learning/index.html">
 <meta property="og:site_name" content="Gwen&#39;s Blog">
-<meta property="og:description" content="认真生活，过好每一天。">
+<meta property="og:description" content="简化的图形渲染管线模型 在数据被传入后，经过简单的处理，第一个阶段（stage）便是顶点着色器。上文提到”着色器”即shader，是我们为GPU编写的独立的小程序。它分为几种不同的类型，分别用于整个渲染流程的不同阶段。在这一阶段，我们这一段小程序的目的是把输入的顶点位置转化为相对于屏幕的顶点位置（经过透视变换），并可处理数据向后续阶段传递 —— 我们可以很轻松的在后续阶段的shader中拿到之前阶">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024113257-1443256676.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024115991-218195257.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024114007-1775357520.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024114741-280099694.png">
+<meta property="og:updated_time" content="2019-03-18T08:01:56.765Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gwen&#39;s Blog">
-<meta name="twitter:description" content="认真生活，过好每一天。">
+<meta name="twitter:title" content="shader理解与学习">
+<meta name="twitter:description" content="简化的图形渲染管线模型 在数据被传入后，经过简单的处理，第一个阶段（stage）便是顶点着色器。上文提到”着色器”即shader，是我们为GPU编写的独立的小程序。它分为几种不同的类型，分别用于整个渲染流程的不同阶段。在这一阶段，我们这一段小程序的目的是把输入的顶点位置转化为相对于屏幕的顶点位置（经过透视变换），并可处理数据向后续阶段传递 —— 我们可以很轻松的在后续阶段的shader中拿到之前阶">
+<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024113257-1443256676.png">
 
 
 
@@ -119,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/18/shader_learning/">
 
 
 
 
 
-  <title>Gwen's Blog</title>
+  <title>shader理解与学习 | Gwen's Blog</title>
   
 
 
@@ -144,8 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -218,9 +223,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -250,9 +255,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/18/shader_learning/" itemprop="url">shader理解与学习</a></h1>
+          <h1 class="post-title" itemprop="name headline">shader理解与学习</h1>
         
 
         <div class="post-meta">
@@ -302,9 +305,7 @@
       
 
       
-        
-          
-            <p>简化的图形渲染管线模型<br><img src="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024113257-1443256676.png" alt="图形渲染管线模型"><br><img src="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024115991-218195257.png" alt></p>
+        <p>简化的图形渲染管线模型<br><img src="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024113257-1443256676.png" alt="图形渲染管线模型"><br><img src="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024115991-218195257.png" alt></p>
 <p>在数据被传入后，经过简单的处理，第一个阶段（stage）便是顶点着色器。上文提到”着色器”即shader，是我们为GPU编写的独立的小程序。它分为几种不同的类型，分别用于整个渲染流程的不同阶段。在这一阶段，我们这一段小程序的目的是把输入的顶点位置转化为相对于屏幕的顶点位置（经过透视变换），并可处理数据向后续阶段传递 —— 我们可以很轻松的在后续阶段的shader中拿到之前阶段shader产生的数据。</p>
 <p>图形渲染管线：（Graphics rendering pipeline）指的是从数据被输入GPU开始，到最后渲染成为图像所经历的一系列有序过程的总称。<br><strong>但首先</strong>，我们要能够告诉GPU，我们要画些什么在屏幕上。现在，人们采用顶点+面的方式来描述。我们把一个个复杂的几何体表示为一组面的集合，就像这样：<br><img src="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024114007-1775357520.png" alt></p>
 <p>尽管这样不能完美的表示一个曲面，但对于骗过我们自己的眼睛来讲这足够了。这个茶壶成为了被一个个四边形包围起来的物体，如果我们存下这些四边形的顶点信息，我们就能够根据这些信息画出一个一模一样的”茶壶”。</p>
@@ -312,8 +313,6 @@
 <p>有了这些信息，我们需要去把它计算成对应于屏幕上的坐标。在这里需要用到空间上的变换，把一个个坐标点换成相对于眼睛位置、朝向的坐标，并经过透视变换，变成对应于屏幕的坐标点。<br><img src="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024114741-280099694.png" alt="（物体的变换过程，注意透视变换产生的&quot;拉伸&quot;）"></p>
 <p>在这之后，我们把这些点组装成一个个面，再计算出每个面对应于屏幕上的那些像素。然后根据传入的顶点数据给这些像素分配颜色，最终呈现在屏幕上（或保存在图像中）。一般情况下，这一整套流程要在一秒钟内执行60次以上 —— 通常有万计的顶点；这便是GPU高度并行化可怕的计算效率。</p>
 
-          
-        
       
     </div>
     
@@ -328,258 +327,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/17/OpenGL_learning1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Gwen090006">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Gwen's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/17/OpenGL_learning1/" itemprop="url">openGL 学习(一)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T22:09:09+08:00">
-                2019-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/图形渲染-shader/" rel="tag"># 图形渲染,shader</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>跟着教程学习。首先是编译OpenGL2.1。因为mac不支持3.3.<br>在编译OpenGL的时候遇到了错误。<br><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g1635qgfs8j30u00u77c5.jpg" alt="error" title="error"><br>仔细查看了下面的报错信息，发现报错为没有cxx编译器。<br><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g1642yv9rqj30uo08gq51.jpg" alt="error_detail"><br>谷歌了一下，找到了一个简单的解决方案。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xcode-select --reset</span><br></pre></td></tr></table></figure>
-<p>问题就解决了。</p>
-<h2 id="开始学习第一课：打开一个窗口"><a href="#开始学习第一课：打开一个窗口" class="headerlink" title="开始学习第一课：打开一个窗口"></a>开始学习第一课：打开一个窗口</h2><p>从依赖库开始。使用基本库在控制台显示消息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;//带缓冲的标准输入输出</span><br><span class="line">#include&lt;stdlib.h&gt;//标准库函数</span><br></pre></td></tr></table></figure></p>
-<p>对于OpenGL里的一些名词需要有一定的了解。<br>顶点vertex：<br>顶点数组对象(VAO):设置完了似乎就是一个无符号int指针。<br>顶点缓冲对象(VBO)</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/17/sublime_pcip/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Gwen090006">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Gwen's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/17/sublime_pcip/" itemprop="url">sublimetext 问题集合</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T22:09:09+08:00">
-                2019-03-17
-              </time>
+              <a href="/2019/03/17/OpenGL_learning1/" rel="next" title="openGL 学习(一)">
+                <i class="fa fa-chevron-left"></i> openGL 学习(一)
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h2 id="1-在使用sublimetext安装新的包的时候，PCIP始终没有反应。"><a href="#1-在使用sublimetext安装新的包的时候，PCIP始终没有反应。" class="headerlink" title="1.在使用sublimetext安装新的包的时候，PCIP始终没有反应。"></a>1.在使用sublimetext安装新的包的时候，PCIP始终没有反应。</h2><p>原因是<strong>channel_v3.json获取失败</strong>。根据网上的分析，该文件是一个package的列表。这里将可以使用的channel_v3.json文件路径配置好即可。网上找了一个博主实时不断更新的channel_v3.json文件。地址为：<a href="https://github.com/HBLong/channel_v3_daily" target="_blank" rel="noopener">channel_v3.json</a><br>本地配置只要如下几步即可：<br>1.下载 channel_v3.json 到本地 /path/xxx/channel_v3.json<br>2.点击 Preferences &gt; Package Settings &gt; Package Control &gt; Settings - User<br>3.添加 “channels”: [“/path/xxx/channel_v3.json”],</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -589,10 +366,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -600,6 +378,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -805,6 +587,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

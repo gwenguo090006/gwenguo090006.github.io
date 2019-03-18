@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="跟着教程学习。首先是编译OpenGL2.1。因为mac不支持3.3.在编译OpenGL的时候遇到了错误。仔细查看了下面的报错信息，发现报错为没有cxx编译器。谷歌了一下，找到了一个简单的解决方案。 1sudo xcode-select --reset 问题就解决了。">
+<meta name="description" content="跟着教程学习。首先是编译OpenGL2.1。因为mac不支持3.3.在编译OpenGL的时候遇到了错误。仔细查看了下面的报错信息，发现报错为没有cxx编译器。谷歌了一下，找到了一个简单的解决方案。 1sudo xcode-select --reset 问题就解决了。 开始学习第一课：打开一个窗口从依赖库开始。使用基本库在控制台显示消息。12#include&amp;lt;stdio.h&amp;gt;//带缓冲的">
 <meta name="keywords" content="opengl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="openGL 学习(一)">
 <meta property="og:url" content="http://yoursite.com/2019/03/17/OpenGL_learning1/index.html">
 <meta property="og:site_name" content="Gwen&#39;s Blog">
-<meta property="og:description" content="跟着教程学习。首先是编译OpenGL2.1。因为mac不支持3.3.在编译OpenGL的时候遇到了错误。仔细查看了下面的报错信息，发现报错为没有cxx编译器。谷歌了一下，找到了一个简单的解决方案。 1sudo xcode-select --reset 问题就解决了。">
+<meta property="og:description" content="跟着教程学习。首先是编译OpenGL2.1。因为mac不支持3.3.在编译OpenGL的时候遇到了错误。仔细查看了下面的报错信息，发现报错为没有cxx编译器。谷歌了一下，找到了一个简单的解决方案。 1sudo xcode-select --reset 问题就解决了。 开始学习第一课：打开一个窗口从依赖库开始。使用基本库在控制台显示消息。12#include&amp;lt;stdio.h&amp;gt;//带缓冲的">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1g1635qgfs8j30u00u77c5.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1g1642yv9rqj30uo08gq51.jpg">
-<meta property="og:updated_time" content="2019-03-17T13:42:04.390Z">
+<meta property="og:updated_time" content="2019-03-18T07:35:17.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openGL 学习(一)">
-<meta name="twitter:description" content="跟着教程学习。首先是编译OpenGL2.1。因为mac不支持3.3.在编译OpenGL的时候遇到了错误。仔细查看了下面的报错信息，发现报错为没有cxx编译器。谷歌了一下，找到了一个简单的解决方案。 1sudo xcode-select --reset 问题就解决了。">
+<meta name="twitter:description" content="跟着教程学习。首先是编译OpenGL2.1。因为mac不支持3.3.在编译OpenGL的时候遇到了错误。仔细查看了下面的报错信息，发现报错为没有cxx编译器。谷歌了一下，找到了一个简单的解决方案。 1sudo xcode-select --reset 问题就解决了。 开始学习第一课：打开一个窗口从依赖库开始。使用基本库在控制台显示消息。12#include&amp;lt;stdio.h&amp;gt;//带缓冲的">
 <meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1g1635qgfs8j30u00u77c5.jpg">
 
 
@@ -306,6 +306,8 @@
         <p>跟着教程学习。首先是编译OpenGL2.1。因为mac不支持3.3.<br>在编译OpenGL的时候遇到了错误。<br><img src="https://ws4.sinaimg.cn/large/006tKfTcly1g1635qgfs8j30u00u77c5.jpg" alt="error" title="error"><br>仔细查看了下面的报错信息，发现报错为没有cxx编译器。<br><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g1642yv9rqj30uo08gq51.jpg" alt="error_detail"><br>谷歌了一下，找到了一个简单的解决方案。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xcode-select --reset</span><br></pre></td></tr></table></figure>
 <p>问题就解决了。</p>
+<h2 id="开始学习第一课：打开一个窗口"><a href="#开始学习第一课：打开一个窗口" class="headerlink" title="开始学习第一课：打开一个窗口"></a>开始学习第一课：打开一个窗口</h2><p>从依赖库开始。使用基本库在控制台显示消息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;//带缓冲的标准输入输出</span><br><span class="line">#include&lt;stdlib.h&gt;//标准库函数</span><br></pre></td></tr></table></figure></p>
+<p>对于OpenGL里的一些名词需要有一定的了解。<br>顶点vertex：<br>顶点数组对象(VAO):设置完了似乎就是一个无符号int指针。<br>顶点缓冲对象(VBO)</p>
 
       
     </div>
@@ -336,14 +338,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/03/17/sublime_pcip/" rel="next" title="sublimetext 问题集合">
+                <i class="fa fa-chevron-left"></i> sublimetext 问题集合
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/17/sublime_pcip/" rel="prev" title="sublimetext 问题集合">
-                sublimetext 问题集合 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/18/shader_learning/" rel="prev" title="shader理解与学习">
+                shader理解与学习 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -396,8 +402,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -412,7 +427,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -425,7 +440,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -448,6 +463,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始学习第一课：打开一个窗口"><span class="nav-number">1.</span> <span class="nav-text">开始学习第一课：打开一个窗口</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
