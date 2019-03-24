@@ -306,7 +306,8 @@
           
             <h2 id="Xcode下搭建OpenGL开发环境"><a href="#Xcode下搭建OpenGL开发环境" class="headerlink" title="Xcode下搭建OpenGL开发环境"></a>Xcode下搭建OpenGL开发环境</h2><p>一开始在配置OpenGL时都是使用glew和glfw库。对于这两个库的主要功能我暂时还不明白。后来更新之后，不再使用glew库，改成了glad库。这里我把这三个都配置了，但是后续教程中使用的还是glfw+glad的组合。</p>
 <p>这里我已经安装了homebrew，就方便了许多。这里我学习到了直接将这些库安装到系统库目录里。</p>
-<h1 id="step1-安装glew和glfw"><a href="#step1-安装glew和glfw" class="headerlink" title="step1 安装glew和glfw"></a>step1 安装glew和glfw</h1><p>、、、<br>brew install glew<br>brew install glfw3<br>、、、<br>安装位置在<strong> /usr/local/Cellar</strong></p>
+<h1 id="step1-安装glew和glfw"><a href="#step1-安装glew和glfw" class="headerlink" title="step1 安装glew和glfw"></a>step1 安装glew和glfw</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install glew</span><br><span class="line">brew install glfw3</span><br></pre></td></tr></table></figure>
+<p>安装位置在<strong> /usr/local/Cellar</strong></p>
 <h1 id="step2-下载并配置glad库"><a href="#step2-下载并配置glad库" class="headerlink" title="step2 下载并配置glad库"></a>step2 下载并配置glad库</h1><p>打开GLAD的<a href="https://glad.dav1d.de/" title="GLAD" target="_blank" rel="noopener">在线服务</a>，将语言(Language)设置为C/C++，在API选项中，选择3.3以上的OpenGL(gl)版本（我们的教程中将使用3.3版本，但更新的版本也能正常工作）。之后将模式(Profile)设置为Core，并且保证生成加载器(Generate a loader)的选项是选中的。现在可以先（暂时）忽略拓展(Extensions)中的内容。都选择完之后，点击生成(Generate)按钮来生成库文件。</p>
 <p>GLAD现在应该提供给你了一个zip压缩文件，包含两个头文件目录，和一个glad.c文件。将两个头文件目录（glad和KHR）复制到include文件夹中（或者增加一个额外的项目指向这些目录），并添加glad.c文件到你的工程中。这里我是将glad和KHR<strong>文件夹</strong>复制到了<strong>系统include目录下，即/usr/local/include</strong>。</p>
 <h1 id="step3-配置Xcode"><a href="#step3-配置Xcode" class="headerlink" title="step3 配置Xcode"></a>step3 配置Xcode</h1><p>在Xcode中找到Peference菜单项，然后在里面找到Locations项，再点击Custom Paths，添加四项<br>配置依次为：<br><img src="https://ws2.sinaimg.cn/large/006tKfTcly1g1e0i6zaoaj318m0fa0z7.jpg" alt="本地路径定义设置"></p>
