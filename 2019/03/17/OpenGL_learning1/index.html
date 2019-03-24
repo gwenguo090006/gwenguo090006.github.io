@@ -89,7 +89,10 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1g1635qgfs8j30u00u77c5.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1g1642yv9rqj30uo08gq51.jpg">
-<meta property="og:updated_time" content="2019-03-18T07:35:17.958Z">
+<meta property="og:image" content="https://diycode.b0.upaiyun.com/photo/2019/6ccb8fcfe3eb1ec97ef76e78833cd41d.jpg">
+<meta property="og:image" content="https://diycode.b0.upaiyun.com/photo/2019/65ac3744d730c361b252627c102d151b.jpg">
+<meta property="og:image" content="https://diycode.b0.upaiyun.com/photo/2019/5792ce385dac9604de32e32369b6cbae.jpg">
+<meta property="og:updated_time" content="2019-03-19T07:44:56.167Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openGL 学习(一)">
 <meta name="twitter:description" content="跟着教程学习。首先是编译OpenGL2.1。因为mac不支持3.3.在编译OpenGL的时候遇到了错误。仔细查看了下面的报错信息，发现报错为没有cxx编译器。谷歌了一下，找到了一个简单的解决方案。 1sudo xcode-select --reset 问题就解决了。 开始学习第一课：打开一个窗口从依赖库开始。使用基本库在控制台显示消息。12#include&amp;lt;stdio.h&amp;gt;//带缓冲的">
@@ -307,7 +310,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xcode-select --reset</span><br></pre></td></tr></table></figure>
 <p>问题就解决了。</p>
 <h2 id="开始学习第一课：打开一个窗口"><a href="#开始学习第一课：打开一个窗口" class="headerlink" title="开始学习第一课：打开一个窗口"></a>开始学习第一课：打开一个窗口</h2><p>从依赖库开始。使用基本库在控制台显示消息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;//带缓冲的标准输入输出</span><br><span class="line">#include&lt;stdlib.h&gt;//标准库函数</span><br></pre></td></tr></table></figure></p>
-<p>对于OpenGL里的一些名词需要有一定的了解。<br>顶点vertex：<br>顶点数组对象(VAO):设置完了似乎就是一个无符号int指针。<br>顶点缓冲对象(VBO)</p>
+<p>对于OpenGL里的一些名词需要有一定的了解。<br><strong>OpenGL上下文</strong>：OpenGL自身是一个巨大的状态机，一系列的变量描述OpenGL此刻应当如何运行，OpenGL的状态通常被称为OpenGL上下文，我们通常使用如下途径去更改OpenGL状态：设置选项，操作缓冲，最后，我们使用当前OpenGL上下文来渲染。<br><strong>顶点数据</strong>：渲染图像需要的顶点坐标数组，例如渲染一个三角形需要三个顶点。<br><strong>着色器</strong>：在GPU上运行的小程序，在图形渲染管线中快速处理你的数据，有三种类型：顶点着色器、<strong>几何着色器、片段着色器</strong>：我们只需要配置顶点和片段着色器就行了，几何着色器是可选的，通常使用它默认的着色器就行了。<br><strong>纹理</strong>：纹理是一个2D图片（甚至也有1D和3D的纹理），它可以用来添加物体的细节。<br><strong>帧缓冲</strong>：一个接收渲染结果的缓冲区，为 GPU 指定存储渲染结果的区域（纹理或渲染缓冲区），默认的帧缓冲是在创建渲染窗口的时候生成和配置的，我们可以自定义自己的帧缓冲。<br><strong>OpenGL坐标</strong>：范围是 -1 ~ 1，是一个三维的坐标系，通常用 X、Y、Z 来表示。Z 轴的正方向指向屏幕外。<br><img src="https://diycode.b0.upaiyun.com/photo/2019/6ccb8fcfe3eb1ec97ef76e78833cd41d.jpg" alt></p>
+<p><strong>纹理坐标</strong>：纹理坐标系的范围是 0 ~ 1，是一个二维坐标系，原点左下，用来标明该从图像的哪个部分采样（使用纹理坐标获取纹理颜色）。<br><img src="https://diycode.b0.upaiyun.com/photo/2019/65ac3744d730c361b252627c102d151b.jpg" alt></p>
+<p><strong>光栅化</strong>：决定哪些像素被集合图元覆盖的过程。<br><img src="https://diycode.b0.upaiyun.com/photo/2019/5792ce385dac9604de32e32369b6cbae.jpg" alt></p>
+<p>顶点vertex：<br>顶点数组对象(VAO):设置完了似乎就是一个无符号int指针。<br>顶点缓冲对象(VBO)</p>
 
       
     </div>
@@ -427,7 +433,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -440,7 +446,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="简化的图形渲染管线模型 在数据被传入后，经过简单的处理，第一个阶段（stage）便是顶点着色器。上文提到”着色器”即shader，是我们为GPU编写的独立的小程序。它分为几种不同的类型，分别用于整个渲染流程的不同阶段。在这一阶段，我们这一段小程序的目的是把输入的顶点位置转化为相对于屏幕的顶点位置（经过透视变换），并可处理数据向后续阶段传递 —— 我们可以很轻松的在后续阶段的shader中拿到之前阶">
+<meta name="description" content="在这篇里学的【https://www.cnblogs.com/betairy-linkzeldagg/p/5426249.html】简化的图形渲染管线模型1.顶点处理：把一个单独的顶点输入顶点着色器，顶点着色器主要的目的是把3D坐标转为另一种3D坐标，OpenGL仅当3D坐标在3个轴（x、y和z）上都为-1.0到1.0的范围内时才处理它。所有在所谓的标准化设备坐标(Normalized Devic">
 <meta name="keywords" content="图形渲染,shader">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shader理解与学习">
 <meta property="og:url" content="http://yoursite.com/2019/03/18/shader_learning/index.html">
 <meta property="og:site_name" content="Gwen&#39;s Blog">
-<meta property="og:description" content="简化的图形渲染管线模型 在数据被传入后，经过简单的处理，第一个阶段（stage）便是顶点着色器。上文提到”着色器”即shader，是我们为GPU编写的独立的小程序。它分为几种不同的类型，分别用于整个渲染流程的不同阶段。在这一阶段，我们这一段小程序的目的是把输入的顶点位置转化为相对于屏幕的顶点位置（经过透视变换），并可处理数据向后续阶段传递 —— 我们可以很轻松的在后续阶段的shader中拿到之前阶">
+<meta property="og:description" content="在这篇里学的【https://www.cnblogs.com/betairy-linkzeldagg/p/5426249.html】简化的图形渲染管线模型1.顶点处理：把一个单独的顶点输入顶点着色器，顶点着色器主要的目的是把3D坐标转为另一种3D坐标，OpenGL仅当3D坐标在3个轴（x、y和z）上都为-1.0到1.0的范围内时才处理它。所有在所谓的标准化设备坐标(Normalized Devic">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024113257-1443256676.png">
 <meta property="og:image" content="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024115991-218195257.png">
 <meta property="og:image" content="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024114007-1775357520.png">
 <meta property="og:image" content="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024114741-280099694.png">
-<meta property="og:updated_time" content="2019-03-18T08:01:56.765Z">
+<meta property="og:updated_time" content="2019-03-18T08:20:45.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shader理解与学习">
-<meta name="twitter:description" content="简化的图形渲染管线模型 在数据被传入后，经过简单的处理，第一个阶段（stage）便是顶点着色器。上文提到”着色器”即shader，是我们为GPU编写的独立的小程序。它分为几种不同的类型，分别用于整个渲染流程的不同阶段。在这一阶段，我们这一段小程序的目的是把输入的顶点位置转化为相对于屏幕的顶点位置（经过透视变换），并可处理数据向后续阶段传递 —— 我们可以很轻松的在后续阶段的shader中拿到之前阶">
+<meta name="twitter:description" content="在这篇里学的【https://www.cnblogs.com/betairy-linkzeldagg/p/5426249.html】简化的图形渲染管线模型1.顶点处理：把一个单独的顶点输入顶点着色器，顶点着色器主要的目的是把3D坐标转为另一种3D坐标，OpenGL仅当3D坐标在3个轴（x、y和z）上都为-1.0到1.0的范围内时才处理它。所有在所谓的标准化设备坐标(Normalized Devic">
 <meta name="twitter:image" content="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024113257-1443256676.png">
 
 
@@ -305,7 +305,13 @@
       
 
       
-        <p>简化的图形渲染管线模型<br><img src="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024113257-1443256676.png" alt="图形渲染管线模型"><br><img src="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024115991-218195257.png" alt></p>
+        <p>在这篇里学的【<a href="https://www.cnblogs.com/betairy-linkzeldagg/p/5426249.html】" target="_blank" rel="noopener">https://www.cnblogs.com/betairy-linkzeldagg/p/5426249.html】</a><br>简化的图形渲染管线模型<br><img src="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024113257-1443256676.png" alt="图形渲染管线模型"><br>1.顶点处理：把一个单独的顶点输入顶点着色器，顶点着色器主要的目的是把3D坐标转为另一种3D坐标，OpenGL仅当3D坐标在3个轴（x、y和z）上都为-1.0到1.0的范围内时才处理它。所有在所谓的标准化设备坐标(Normalized Device Coordinates)范围内的坐标才会最终呈现在屏幕上（在这个范围以外的坐标都不会显示）。</p>
+<p>2.图元装配：以顶点着色器的输出的顶点作为输入，装配成对应的图元（OpenGL ES 只支持三种图元，分别是顶点、线段、三角形，复杂的图形得通过渲染多个三角形来实现）。</p>
+<p>3.处理图元：把上一步输出的图元输入到几何着色器，几何着色器把图元形式的一系列顶点的集合作为输入，它可以通过产生新顶点构造出新的（或是其它的）图元来生成其他形状。</p>
+<p>4.光栅化：把图元映射为最终屏幕上相应的像素，会裁剪超出视图外的像素（为了提高效率），最终生成片段。</p>
+<p>5.处理片段：将片段输入到片段着色器，片段着色器的主要目的是计算一个像素的最终颜色（滤镜处理的地方）。</p>
+<p>6.测试及混合：这个阶段检测片段的对应的深度值和模板值，用它们来判断这个像素是其它物体的前面还是后面，决定是否应该丢弃。这个阶段也会检查alpha值（alpha值定义了一个物体的透明度）并对物体进行混合(Blend)。</p>
+<p><img src="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024115991-218195257.png" alt></p>
 <p>在数据被传入后，经过简单的处理，第一个阶段（stage）便是顶点着色器。上文提到”着色器”即shader，是我们为GPU编写的独立的小程序。它分为几种不同的类型，分别用于整个渲染流程的不同阶段。在这一阶段，我们这一段小程序的目的是把输入的顶点位置转化为相对于屏幕的顶点位置（经过透视变换），并可处理数据向后续阶段传递 —— 我们可以很轻松的在后续阶段的shader中拿到之前阶段shader产生的数据。</p>
 <p>图形渲染管线：（Graphics rendering pipeline）指的是从数据被输入GPU开始，到最后渲染成为图像所经历的一系列有序过程的总称。<br><strong>但首先</strong>，我们要能够告诉GPU，我们要画些什么在屏幕上。现在，人们采用顶点+面的方式来描述。我们把一个个复杂的几何体表示为一组面的集合，就像这样：<br><img src="https://images2015.cnblogs.com/blog/640822/201604/640822-20160424024114007-1775357520.png" alt></p>
 <p>尽管这样不能完美的表示一个曲面，但对于骗过我们自己的眼睛来讲这足够了。这个茶壶成为了被一个个四边形包围起来的物体，如果我们存下这些四边形的顶点信息，我们就能够根据这些信息画出一个一模一样的”茶壶”。</p>
@@ -351,6 +357,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/24/mac_opengl_xcode/" rel="prev" title="openGL 学习准备">
+                openGL 学习准备 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -418,7 +428,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -431,7 +441,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
